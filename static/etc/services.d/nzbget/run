@@ -1,0 +1,8 @@
+#!/usr/bin/with-contenv bash
+
+umask 0002
+
+chown -R bytesized:bytesized /app /config
+
+echo "Starting NZBGet"
+TERM=xterm exec s6-setuidgid bytesized /app/nzbget/nzbget -c /config/nzbget.conf -s
